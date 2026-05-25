@@ -70,6 +70,11 @@ Common session states:
 
 Participants are users or guests involved in a Session.
 
+Invitation lifecycle behavior is owned by:
+- docs/shared-invitations.md
+
+Sessions consume invitation outcomes rather than implementing invitation infrastructure directly.
+
 Participant status may include:
 - invited
 - accepted
@@ -86,7 +91,7 @@ General flow:
 
 1. Session is created
 2. Participants are invited
-3. Participants accept or decline
+3. Shared invitation system processes accept/decline behavior
 4. Session enters waiting/lobby state
 5. Host starts session
 6. Session becomes active
