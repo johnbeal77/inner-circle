@@ -27,11 +27,13 @@ Players should always understand:
 
 The lobby manages:
 - player presence
-- invite status
 - session configuration visibility
 - prompt submission progress
 - session readiness
 - gameplay start transition
+
+Invitation lifecycle behavior is owned by:
+- docs/shared-invitations.md
 
 ---
 
@@ -81,10 +83,16 @@ The lobby should clearly communicate whether the session is:
 ## Host Controls
 
 The Host may:
-- invite/remove Players
+- request player invitations
+- remove Players from the session
 - adjust configuration
 - start session
 - cancel session
+
+Invitation infrastructure is owned by:
+- docs/shared-invitations.md
+
+Game Hat and Game Night may request invitation behavior, but they do not own invitation lifecycle or delivery systems.
 
 Possible future options:
 - lock settings
