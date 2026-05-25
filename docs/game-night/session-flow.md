@@ -28,14 +28,24 @@ Game-specific gameplay rules belong to the individual game tool.
 
 ## Player Invitation Flow
 
-Host selects Circle members to invite.
+The Host requests player invitations through the shared invitation infrastructure.
 
 Invitees may:
 - accept
 - decline
 - ignore invitation
 
-Accepted users become Players in the session.
+Accepted invitees become Players in the session.
+
+Invitation lifecycle behavior is owned by:
+- docs/shared-invitations.md
+
+Game Night is responsible for:
+- selecting invite targets
+- session readiness
+- participant coordination
+
+Game Night does not own invitation delivery or invitation lifecycle infrastructure.
 
 ---
 
