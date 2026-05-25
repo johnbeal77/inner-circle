@@ -140,11 +140,23 @@ Modules must not create their own group systems.
 Owner:
 - Shared Infrastructure Layer
 
-Modules may request invitations, but the invitation system itself is shared.
+Canonical document:
+- docs/shared-invitations.md
 
-Example:
-- Game Night requests invitations for a session.
-- Invitation delivery, acceptance, decline, and notification behavior are shared infrastructure.
+Modules and tools may request invitations, but they must not implement their own invitation lifecycle or delivery systems.
+
+Examples:
+- Game Night may request session invitations.
+- Game Hat may rely on Game Night/session invitations.
+- Circle invitations are handled through the shared invitation framework.
+
+Shared Invitations owns:
+- invitation creation
+- invitation status tracking
+- acceptance/decline handling
+- expiration behavior
+- delivery coordination
+- notification integration points
 
 ---
 
