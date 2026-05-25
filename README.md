@@ -2,7 +2,15 @@
 
 Inner Circle is a modular shared platform for trusted groups such as families, friends, roommates, and recurring social groups.
 
-It provides private Circles where members can use shared tools, coordinate daily life, and participate in social experiences.
+It provides private Circles where members can coordinate daily life, use shared tools, and participate in social experiences.
+
+---
+
+## Current Status
+
+This project is in the pre-implementation architecture phase.
+
+The repository currently contains architecture, planning, and system ownership documentation. Flutter implementation has not started yet.
 
 ---
 
@@ -10,9 +18,12 @@ It provides private Circles where members can use shared tools, coordinate daily
 
 Inner Circle is the platform.
 
+A Circle is a private shared space.
+
 Modules live inside Circles.
 
 Planned modules include:
+
 - Family Toolbox
 - Game Night
 - Recipes
@@ -20,33 +31,45 @@ Planned modules include:
 
 ---
 
-## Current Status
+## First Major Module
 
-This project is in early architecture and planning.
+The first major planned module is **Game Night**.
 
-Implementation should follow the documentation in `/docs`.
+Game Night contains **Game Hat**, a prompt-based play tool for modes such as:
+
+- Act It Out
+- Draw It
+
+Game Hat is intended to replace the physical experience of drawing paper slips from a hat.
 
 ---
 
-## Documentation
+## Architecture Principles
 
-Key docs:
+Inner Circle is designed around:
 
-- `docs/inner-circle.md`
-- `docs/design-philosophy.md`
-- `docs/architecture.md`
-- `docs/flutter-architecture.md`
-- `docs/data-model.md`
-- `docs/supabase-architecture.md`
-- `docs/database-schema.md`
-- `docs/navigation-architecture.md`
-- `docs/authentication-flow.md`
-- `docs/module-loading.md`
-- `docs/state-and-events.md`
-- `docs/realtime-strategy.md`
-- `docs/permissions-and-roles.md`
-- `docs/implementation-plan.md`
-- `docs/codex-instructions.md`
+- ownership-first architecture
+- reusable shared infrastructure
+- Circle-scoped data
+- deterministic state and events
+- reconnect-safe realtime behavior
+- shared-device support
+- accessibility-first design
+- documentation-driven development
+
+---
+
+## Documentation Entry Points
+
+Start here:
+
+- `docs/architecture-index.md`
+- `docs/shared-architecture-principles.md`
+- `docs/system-ownership-map.md`
+- `docs/mvp-scope.md`
+- `docs/implementation-roadmap.md`
+- `docs/implementation-guardrails.md`
+- `docs/repository-structure.md`
 
 ---
 
@@ -54,4 +77,4 @@ Key docs:
 
 Documentation is the source of truth.
 
-If code conflicts with docs, update the docs first or resolve the conflict before coding.
+If implementation conflicts with documentation, pause implementation and resolve the architectural conflict before coding.
