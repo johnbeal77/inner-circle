@@ -57,34 +57,52 @@ Goals:
 - create placeholder modules
 
 Output:
-- Family Toolbox and Game Night appear as modules
+- Game Night appears as an enabled module.
+- Family Toolbox may exist as a placeholder only.
 
 ---
 
-## Phase 5 — Family Toolbox MVP
+## Phase 5 — Shared Session Infrastructure
 
 Goals:
-- shared grocery list
-- basic chores list
+- session lifecycle
+- participants
+- presence
+- realtime synchronization
+- timers
+- validation
 
 Output:
-- first practical household tools
+- reusable live-session foundation
 
 ---
 
 ## Phase 6 — Game Night MVP
 
 Goals:
-- create Game Night session
+- create session
 - invite players
-- launch Game Hat
-- collect prompts
-- run basic turn flow
+- Game Hat
+- prompt submission
+- prompt assignment
+- Act It Out gameplay
+- scoring
+- reconnect handling
 
 Output:
-- first playable shared game experience
+- first playable multiplayer experience
 
 ---
+
+## Phase 7 — Family Toolbox MVP
+
+Goals:
+- grocery list
+- chores
+
+Output:
+- first household productivity tools
+
 
 ## Development Rule
 
