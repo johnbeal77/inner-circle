@@ -5,115 +5,185 @@
 Inner Circle is built as a modular Flutter application.
 
 The application consists of:
+- an application layer
 - a platform layer
+- shared infrastructure
 - module layers
-- optional engine layers inside modules
+- optional module-owned tools and engines
 
 The architecture prioritizes:
 - modularity
 - separation of concerns
 - scalability
 - reusable shared systems
+- deterministic behavior
+- reconnect-safe collaboration
 
 ---
 
 # Architecture Layers
 
-## 1. Platform Layer
+## 1. App Layer
+
+The app layer is responsible for:
+- application bootstrap
+- theme initialization
+- root routing
+- environment configuration
+
+The app layer should remain lightweight.
+
+---
+
+## 2. Platform Layer
 
 The platform layer is responsible for:
 - authentication
+- user profiles
 - Circle management
-- permissions
-- navigation
-- shared infrastructure
+- memberships
+- permissions policy
+- module registry
+- active Circle context
 
 This layer should NOT contain module-specific business logic.
 
 ---
 
-## 2. Module Layer
+## 3. Shared Infrastructure
+
+Shared infrastructure provides reusable systems used by multiple modules.
+
+Examples:
+- sessions
+- realtime synchronization
+- timers
+- participant presence
+- validation
+- diagnostics
+- shared UI
+- accessibility
+
+Shared infrastructure should remain module-independent.
+
+---
+
+## 4. Module Layer
 
 Modules are self-contained feature systems.
 
-Examples:
-- Family Toolbox
+Initial modules:
 - Game Night
 
-Each module manages:
-- its own screens
-- workflows
-- internal logic
-- Circle-scoped data
+Future modules may include:
+- Family Toolbox
+- Recipes
+- Planning
 
-Modules should be independent whenever possible.
+Each module manages:
+- screens
+- workflows
+- module-specific state
+- Circle-scoped data
+- module coordination
+
+Modules should remain independent whenever possible.
 
 ---
 
-## 3. Engine Layer (Optional)
+## 5. Module-Owned Tools and Engines
 
-Some modules may contain reusable internal engines.
+Modules may contain tools or engines.
 
 Example:
-- Game Night contains Game Hat
 
-Engines manage:
+Game Night
+- Game Hat
+
+Tools and engines manage:
 - rules
 - state machines
-- runtime gameplay logic
+- gameplay behavior
+- tool-specific workflows
 
-Engines should remain UI-independent whenever possible.
+Tools should remain owned by their parent module unless reuse outside the module is intentionally approved.
+
+Game Hat should remain a Game Night-owned tool.
 
 ---
 
-# Folder Structure (Planned)
+# Folder Structure
 
+```text
 lib/
-  core/
-  circles/
+  app/
+  platform/
+  shared/
   modules/
-    family_toolbox/
     game_night/
       game_hat/
+```
+
+Tests should mirror the same ownership structure.
 
 ---
 
 # Shared Infrastructure
 
-The following systems should be reusable across modules:
-- authentication
-- Circle permissions
-- notifications
+Reusable infrastructure includes:
+- authentication integration
+- session lifecycle
+- realtime synchronization
+- participant presence
 - timers
-- dialogs
-- shared UI components
+- validation
+- diagnostics
+- shared UI
+- accessibility
+
+Infrastructure should not contain Game Hat-specific logic.
 
 ---
 
-# State Management (Planned)
+# State Management
 
-The architecture should support scalable state management.
-
-Preferred direction:
+Initial state management:
 - Riverpod
 
-Reason:
-- modularity
+Reasons:
+- modular architecture support
 - testability
+- provider-based composition
 - separation of state from UI
+- suitability for realtime and reconnect-safe coordination
+
+State management must align with:
+- shared-state-management.md
+- shared-synchronization-principles.md
 
 ---
 
-# Backend (Planned)
+# Backend
 
-Preferred backend:
+Initial backend:
 - Supabase
 
 Used for:
 - authentication
-- realtime sync
-- shared data
+- database persistence
+- realtime synchronization
 - multiplayer sessions
+- storage
+
+Important principle:
+
+Supabase provides infrastructure.
+
+Inner Circle owns:
+- business rules
+- permissions meaning
+- lifecycle behavior
+- synchronization semantics
 
 ---
 
@@ -121,6 +191,10 @@ Used for:
 
 - Keep modules isolated
 - Avoid cross-module dependencies
-- Keep engines reusable
+- Keep tools owned by modules
+- Keep engines reusable where appropriate
 - Separate UI from business logic
 - Keep shared infrastructure centralized
+- Favor deterministic systems
+- Favor reconnect-safe collaboration
+- Preserve clear ownership boundaries
