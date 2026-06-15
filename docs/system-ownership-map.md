@@ -20,7 +20,7 @@ If a behavior is specific to one module or tool, it belongs there.
 
 # Ownership Layers
 
-## 1. Platform Layer — Inner Circle
+## 1. Platform Layer
 
 The platform owns systems that apply across the entire app.
 
@@ -32,11 +32,9 @@ Platform-owned responsibilities:
 - Circle membership
 - Circle switching
 - permissions and roles
-- global navigation shell
 - module registration
 - module availability
 - app-wide settings
-- platform-level error handling
 - platform-level privacy rules
 
 The platform must NOT contain module-specific business logic.
@@ -54,14 +52,16 @@ Shared infrastructure responsibilities:
 - realtime transport
 - reconnect recovery patterns
 - timer primitives
+- participant presence
+- validation helpers
 - shared UI components
 - dialogs
 - cards
 - buttons
 - accessibility primitives
 - logging
-- validation helpers
-- audio/feedback primitives
+- diagnostics
+- audio and feedback primitives
 
 Shared infrastructure should be generic.
 
@@ -153,7 +153,7 @@ Examples:
 Shared Invitations owns:
 - invitation creation
 - invitation status tracking
-- acceptance/decline handling
+- acceptance and decline handling
 - expiration behavior
 - delivery coordination
 - notification integration points
@@ -174,7 +174,15 @@ Modules may emit notification events, but notification delivery and presentation
 Owner:
 - Platform Layer
 
-Modules may define module-specific permissions, but they must inherit from Circle roles.
+Modules may define module-specific permission requirements, but permission evaluation should be performed through shared permission infrastructure.
+
+Platform owns:
+- permission policy
+- Circle roles
+- authorization semantics
+
+Shared Infrastructure owns:
+- reusable permission evaluation helpers
 
 ---
 
@@ -249,7 +257,7 @@ Game Night owns:
 - participant coordination
 - launching tools such as Game Hat
 
-Game Night does not own platform invitations, platform notifications, or authentication.
+Game Night does not own authentication, permissions, invitations, or notifications.
 
 ---
 
@@ -280,18 +288,22 @@ Game Hat uses shared systems for:
 
 Allowed dependency direction:
 
-Platform
+```text
+App
+→ Platform
 → Shared Infrastructure
 → Modules
-→ Tools / Engines
+→ Module-Owned Tools / Engines
+```
 
-Tools may depend on shared infrastructure.
+General guidance:
 
-Tools must not own shared infrastructure.
-
-Modules may depend on platform services.
-
-Platform must not depend on module logic.
+- App may depend on Platform.
+- Platform may depend on Shared Infrastructure.
+- Modules may depend on Platform and Shared Infrastructure.
+- Tools and Engines may depend on Modules, Platform, and Shared Infrastructure.
+- Shared Infrastructure must not depend on Modules or Tools.
+- Platform must not depend on Module-specific business logic.
 
 ---
 
@@ -303,7 +315,7 @@ Promotion path:
 
 Tool-specific behavior
 → Module-level behavior
-→ Shared infrastructure
+→ Shared Infrastructure
 → Platform-level behavior
 
 Promotion should be intentional, not automatic.
