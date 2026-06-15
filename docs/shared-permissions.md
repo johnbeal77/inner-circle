@@ -7,7 +7,7 @@ Inner Circle uses shared permission and authorization infrastructure to manage a
 - Circles
 - modules
 - sessions
-- tools/engines
+- tools and engines
 
 Permission systems should remain reusable, predictable, and Circle-aware.
 
@@ -15,9 +15,11 @@ Permission systems should remain reusable, predictable, and Circle-aware.
 
 ## Core Principle
 
-Authorization behavior belongs to shared infrastructure and platform architecture rather than individual modules.
+Authorization policy belongs to the Platform Layer.
 
-Modules and tools may define additional role behavior, but they must integrate into shared permission systems.
+Permission evaluation infrastructure belongs to Shared Infrastructure.
+
+Modules and tools may define additional role behavior, but they must integrate into the shared permission system and respect platform authorization rules.
 
 ---
 
@@ -25,14 +27,17 @@ Modules and tools may define additional role behavior, but they must integrate i
 
 Shared permission infrastructure owns:
 
-- authentication integration
 - authorization primitives
-- Circle membership validation
-- role validation
-- permission evaluation
-- scoped access coordination
-- protected action enforcement
+- permission evaluation helpers
+- Circle membership validation helpers
+- role validation helpers
+- scoped access evaluation
+- protected action helpers
 - authorization-aware realtime access
+
+Shared infrastructure does not define authorization policy.
+
+Authorization policy belongs to the Platform Layer.
 
 ---
 
@@ -45,7 +50,7 @@ Authenticated User
 → Circle Role
 → Module Access
 → Session Participation
-→ Tool/Engine Behavior
+→ Tool and Engine Behavior
 
 ---
 
@@ -87,10 +92,10 @@ Module permissions should extend platform permissions rather than replace them.
 # Session Permissions
 
 Shared infrastructure owns:
-- participant authorization
-- session access validation
-- reconnect authorization
-- session-scoped visibility
+- participant authorization helpers
+- session access validation helpers
+- reconnect authorization helpers
+- session-scoped visibility helpers
 
 Modules define:
 - gameplay meaning
@@ -184,10 +189,13 @@ Permission systems should:
 
 # Ownership
 
-Owner:
+Authorization Policy Owner:
+- Platform Layer
+
+Shared Permission Infrastructure Owner:
 - Shared Infrastructure Layer
 
 Used by:
 - Platform Layer
 - Modules
-- Tools / Engines
+- Tools and Engines
