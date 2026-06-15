@@ -140,20 +140,19 @@ Important principle:
 
 # State Management
 
+# State Management
+
 Initial frontend state management:
-- TBD during implementation spike
-
-Candidate approaches:
 - Riverpod
-- Bloc
-- Provider
 
-Selection criteria:
-- deterministic state flow
-- reconnect-safe synchronization
-- scalable modular architecture
-- testability
-- readability
+Reasons:
+- strong support for modular architecture
+- testable state providers
+- clean separation between UI and state
+- good fit for shared infrastructure
+- suitable for realtime and reconnect-safe state coordination
+
+Future evaluation may occur as the platform evolves, but Riverpod is the initial state management choice for the MVP.
 
 State management must align with:
 - shared-state-management.md
@@ -296,7 +295,6 @@ Highest implementation priorities:
 
 Decisions intentionally deferred until implementation spikes:
 
-- final frontend state library
 - advanced caching strategy
 - offline-first support
 - advanced analytics stack
