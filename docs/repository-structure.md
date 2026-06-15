@@ -4,13 +4,6 @@
 
 This document defines the intended high-level repository structure for the Inner Circle MVP.
 
-Its purpose is to:
-- preserve architectural organization
-- reinforce ownership boundaries
-- reduce implementation confusion
-- support scalable development
-- maintain long-term clarity
-
 The repository structure should reflect:
 - platform ownership
 - shared infrastructure boundaries
@@ -20,7 +13,7 @@ The repository structure should reflect:
 
 ---
 
-# Core Principle
+## Core Principle
 
 Repository structure should mirror architectural ownership.
 
@@ -38,12 +31,13 @@ Avoid:
 
 ---
 
-# High-Level Structure
+## High-Level Flutter Structure
 
 ```text
-/lib
-  /platform
-  /shared
-  /modules
-  /tools
-  /app
+lib/
+  app/
+  platform/
+  shared/
+  modules/
+    game_night/
+      game_hat/
