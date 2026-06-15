@@ -14,6 +14,12 @@ The goal is to support:
 
 ---
 
+## Source of Truth
+
+This document is the canonical database schema reference for the MVP.
+
+Older generic database schema drafts are superseded by this document.
+
 ## Auth Users
 
 Supabase Auth manages authenticated users.
