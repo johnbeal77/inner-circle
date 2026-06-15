@@ -62,13 +62,21 @@ Included:
 - shared sessions
 - shared realtime
 - shared timers
-- shared invitations
-- shared notifications
+- shared invitation state
+- shared notification state
 - shared validation
 - shared error handling
 - shared accessibility
 - shared navigation
 - shared identity and presence
+
+For MVP:
+
+- invitation delivery remains lightweight
+- notification delivery remains lightweight
+- push notifications are not required
+- QR-based invitation flows are not required
+- advanced notification preferences are not required
 
 ---
 
@@ -104,6 +112,7 @@ Included:
 - multiplayer session lifecycle
 
 Excluded initially:
+
 - advanced moderation tools
 - tournament systems
 - advanced matchmaking
@@ -116,12 +125,24 @@ Excluded initially:
 Included modes:
 
 ## Act It Out
+
 Players perform prompts while others guess.
 
 ---
 
 ## Draw It
+
 Players draw prompts while others guess.
+
+For MVP:
+
+- drawing occurs physically or outside the app
+- the app manages prompts
+- the app manages timers
+- the app manages scoring
+- the app manages turn flow
+
+An in-app drawing canvas is explicitly deferred until post-MVP evaluation.
 
 ---
 
@@ -138,11 +159,13 @@ Included systems:
 - session completion
 
 Excluded initially:
+
 - advanced animations
 - replay systems
 - AI-generated prompts
 - advanced cosmetics
 - advanced progression systems
+- in-app drawing canvas
 
 ---
 
@@ -156,6 +179,7 @@ Included:
 - privacy-aware prompt reveal
 
 Excluded initially:
+
 - advanced kiosk modes
 - multi-screen orchestration
 - hardware integrations
@@ -173,6 +197,7 @@ Included:
 - non-audio-only interaction
 
 Excluded initially:
+
 - advanced accessibility customization systems
 
 Accessibility remains foundational even within MVP scope.
@@ -190,6 +215,7 @@ Included:
 - synchronized timers
 
 Excluded initially:
+
 - offline-first collaboration
 - advanced conflict resolution systems
 - distributed synchronization models
@@ -207,6 +233,7 @@ Included:
 - reconnect recovery state
 
 Excluded initially:
+
 - complex archival systems
 - advanced export systems
 - deep historical analytics
@@ -223,6 +250,7 @@ Included:
 - operational logging
 
 Excluded initially:
+
 - advanced telemetry dashboards
 - complex behavioral analytics
 - monetization analytics
@@ -240,6 +268,7 @@ The MVP should prioritize:
 - deterministic synchronization
 
 The MVP does NOT require:
+
 - hyperscale optimization
 - premature micro-optimization
 - excessive rendering complexity
@@ -257,6 +286,7 @@ The MVP should feel:
 - architecturally stable
 
 Avoid:
+
 - feature overload
 - excessive configuration
 - unnecessary complexity
@@ -288,7 +318,9 @@ Possible future areas:
 - recipes
 - chores
 - planning
-- advanced notifications
+- push notifications
+- advanced notification preferences
+- QR invitation flows
 - replay systems
 - richer customization
 - analytics expansion
