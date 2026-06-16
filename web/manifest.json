@@ -1,0 +1,8 @@
+{
+  "name": "Inner Circle",
+  "short_name": "Inner Circle",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#476A55"
+}

@@ -8,9 +8,9 @@ It provides private Circles where members can coordinate daily life, use shared 
 
 ## Current Status
 
-This project is in the pre-implementation architecture phase.
+This project is in early implementation.
 
-The repository currently contains architecture, planning, and system ownership documentation. Flutter implementation has not started yet.
+The repository contains architecture, planning, and system ownership documentation, plus the initial Flutter scaffold. Phase 2 adds the Supabase foundation for client setup, email/password authentication, and profile completion.
 
 ---
 
@@ -70,6 +70,7 @@ Start here:
 - `docs/implementation-roadmap.md`
 - `docs/implementation-guardrails.md`
 - `docs/repository-structure.md`
+- `docs/local-development.md`
 
 ---
 

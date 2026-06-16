@@ -33,11 +33,22 @@ Application profile data should be stored separately.
 Stores public app profile information.
 
 Fields:
-- id (uuid, references auth.users.id)
+- id (uuid, references auth.users.id, on delete cascade)
 - display_name
 - avatar_url
-- created_at
-- updated_at
+- created_at (default now)
+- updated_at (default now)
+
+Phase 2 behavior:
+- profiles are created with a client-side upsert after authentication
+- database triggers should not create profiles yet
+- display_name is required before entering the Circle Home placeholder
+
+RLS expectations:
+- users may insert their own profile where id = auth.uid()
+- users may select their own profile where id = auth.uid()
+- users may update their own profile where id = auth.uid()
+- users must not select or modify another user's profile
 
 ---
 
