@@ -1,4 +1,4 @@
-create or replace function public.can_manage_session(session_id uuid)
+create or replace function public.can_manage_session(target_session_id uuid)
 returns boolean
 language sql
 stable
